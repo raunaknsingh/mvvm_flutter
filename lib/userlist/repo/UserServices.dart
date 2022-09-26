@@ -16,7 +16,7 @@ class UserServices {
             response: userListModelFromJson(response.body));
       }
       return Failure(
-          code: response.statusCode, errorResponse: 'Invalid Response');
+          code: USER_INVALID_RESPONSE, errorResponse: 'Invalid Response');
     } on HttpException {
       return Failure(code: NO_INTERNET, errorResponse: 'No Internet');
     } on FormatException {
