@@ -10,7 +10,7 @@ class UserServices {
     try {
       var url = Uri.parse(USERS_LIST);
       var response = await http.get(url);
-      if (200 == response.statusCode) {
+      if (SUCCESS == response.statusCode) {
         return Success(
             code: response.statusCode,
             response: userListModelFromJson(response.body));
