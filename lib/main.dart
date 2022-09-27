@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_flutter/userlist/view/HomeScreen.dart';
-import 'package:mvvm_flutter/userlist/viewmodel/UserViewModel.dart';
+import 'package:mvvm_flutter/userlist/presentation/view/HomeScreen.dart';
+import 'package:mvvm_flutter/userlist/presentation/viewmodel/UserViewModel.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => UserViewModel())],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'User List',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

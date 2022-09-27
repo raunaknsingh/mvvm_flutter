@@ -1,12 +1,15 @@
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:mvvm_flutter/userlist/model/UserListModel.dart';
-import 'package:mvvm_flutter/userlist/repo/ApiStatus.dart';
+import 'package:mvvm_flutter/userlist/domain/repo/UserServicesRepo.dart';
 import 'package:mvvm_flutter/userlist/utils/Constants.dart';
 
-class UserServices {
-  static Future<Object> getusers() async {
+import '../model/UserListModel.dart';
+import '../../common/repo/ApiStatus.dart';
+
+class UserServicesRepoImpl implements UserServicesRepo {
+  @override
+  Future<Object> getUsers() async {
     try {
       var url = Uri.parse(USERS_LIST);
       var response = await http.get(url);

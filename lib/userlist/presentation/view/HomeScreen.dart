@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_flutter/userlist/model/UserListModel.dart';
-import 'package:mvvm_flutter/userlist/viewmodel/UserViewModel.dart';
 import 'package:provider/provider.dart';
+
+import '../../data/model/UserListModel.dart';
+import '../viewmodel/UserViewModel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

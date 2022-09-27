@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_flutter/userlist/model/UserError.dart';
-import 'package:mvvm_flutter/userlist/model/UserListModel.dart';
-import 'package:mvvm_flutter/userlist/repo/ApiStatus.dart';
-import 'package:mvvm_flutter/userlist/repo/UserServices.dart';
+
+import '../../common/model/UserError.dart';
+import '../../common/repo/ApiStatus.dart';
+import '../../data/model/UserListModel.dart';
+import '../../data/repo/UserServicesRepoImpl.dart';
+import '../../domain/usecase/UserListUseCase.dart';
 
 class UserViewModel extends ChangeNotifier {
   bool _loading = false;
@@ -12,6 +14,9 @@ class UserViewModel extends ChangeNotifier {
   bool get loading => _loading;
   List<UserItemModel> get userListModel => _userListModel;
   UserError? get userError => _userError;
+
+  UserListUseCase userListUseCase =
+      UserListUseCase(userServicesRepo: UserServicesRepoImpl());
 
   UserViewModel() {
     getUsers();
@@ -32,7 +37,7 @@ class UserViewModel extends ChangeNotifier {
 
   getUsers() async {
     setLoading(true);
-    var response = await UserServices.getusers();
+    var response = await userListUseCase.perform();
     if (response is Success) {
       setUserListModel(response.response as List<UserItemModel>);
     }
